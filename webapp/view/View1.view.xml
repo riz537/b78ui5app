@@ -6,7 +6,7 @@
   xmlns:core="sap.ui.core">
   <Page title="I am View1">
     <content>
-    <Button text="added dummy button"></Button>
+    
       <Panel headerText="Filter/Sort Employees" expandable="true" class="sapUiSmallMarginBeginEnd" width="auto">
         <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
           <f:content>
