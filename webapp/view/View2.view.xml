@@ -1,0 +1,9 @@
+<mvc:View controllerName="com.demo.b78sapui5.controller.View2"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="I am View2" showNavButton="true" navButtonPress="onNavBack">
+    <content>
+      <!-- <Button text="Back" type="Emphasized" press="onNavBack"></Button> -->
+    </content>
+    </Page>
+</mvc:View>

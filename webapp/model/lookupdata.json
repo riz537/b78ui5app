@@ -1,0 +1,21 @@
+{
+    "aModelOfContact": [
+        {
+            "text": "Email"
+        },
+        {
+            "text": "Phone"
+        },
+        {
+            "text": "Fax"
+        }
+    ],
+    "aYesNo":[
+        {
+            "text":"YES"
+        },
+        {
+            "text":"YES"
+        }
+    ]
+}

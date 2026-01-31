@@ -1,0 +1,132 @@
+<mvc:View controllerName="com.demo.b78sapui5.controller.View1"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:l="sap.ui.layout"
+  xmlns:core="sap.ui.core">
+  <Page title="I am View1">
+    <content>
+      <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
+        <f:content>
+          <Label text="Select an Employee Id"></Label>
+          <Input id="oIpEmpId" showValueHelp="true" valueHelpRequest="onPressF4Help"></Input>
+         
+            
+          
+        </f:content>
+      </f:SimpleForm>
+
+
+      <!-- <Table id="oTabEmp" items="{oModel>/EmployeeSet}" mode="MultiSelect">
+        <headerToolbar>
+          <Toolbar >
+            <Title text="Employee List"></Title>
+            <ToolbarSpacer ></ToolbarSpacer>
+            <Button text="Get me Selected Employee Id(s)" type="Emphasized" press="getEmpId"></Button>
+          </Toolbar>
+        
+        </headerToolbar>
+        <columns>
+          <Column>
+            <Text text="Employee Id"></Text>
+          </Column>
+          <Column >
+            <Text text="Name"></Text>
+          </Column>
+          <Column >
+            <Text text="Designation"></Text>
+          </Column>
+          <Column >
+            <Text text="Skill"></Text>
+          </Column>
+          <Column >
+            <Text text="Status"></Text>
+          </Column>
+          <Column >
+            <Text text="Rating"></Text>
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem type="Navigation" press="onPressRow">
+            <Text text="{oModel>Empid}"></Text>
+            <Text text="{oModel>Name}"></Text>
+            <Text text="{oModel>Desig}"></Text>
+            <Text text="{oModel>Skill}"></Text>
+            <ObjectStatus text="{oModel>Status}" state="{path:'oModel>Status',formatter:'.f.formatStatus'}" inverted="true"></ObjectStatus>
+            <Text text="{path:'oModel>Rating',formatter:'.f.formatRating'}"></Text>
+          </ColumnListItem>
+        </items>
+      </Table> -->
+
+      <!-- <List items="{oModel>/EmployeeSet}">
+         <headerToolbar>
+          <Toolbar >
+            <Title text="Employee List"></Title>
+          </Toolbar>
+        </headerToolbar>
+         <items>
+            <ObjectListItem title="{oModel>Name}" number="{oModel>Salary}" numberUnit="INR">
+              <attributes>
+                  <ObjectAttribute title="Employee Id" text="{oModel>Empid}"></ObjectAttribute>
+                  <ObjectAttribute title="Designation" text="{oModel>Desig}"></ObjectAttribute>
+                  <ObjectAttribute title="Skill" text="{oModel>Skill}"></ObjectAttribute>
+              </attributes>
+              <firstStatus>
+                   <ObjectStatus text="{oModel>Status}" state="{=${oModel>Status} === 'PERMANENT'?'Success':'Error'}" inverted="true"></ObjectStatus>
+              </firstStatus>
+              
+            </ObjectListItem>
+         </items>
+      </List> -->
+
+
+      <!-- <Table items="{empModel>/results}">
+        <headerToolbar>
+          <Toolbar >
+            <Title text="Employee List by reading into a json model"></Title>
+          </Toolbar>
+        </headerToolbar>
+        <columns>
+          <Column>
+            <Text text="Employee Id"></Text>
+          </Column>
+          <Column >
+            <Text text="Name"></Text>
+          </Column>
+          <Column >
+            <Text text="Designation"></Text>
+          </Column>
+          <Column >
+            <Text text="Skill"></Text>
+          </Column>
+          <Column >
+            <Text text="Status"></Text>
+          </Column>
+          <Column >
+            <Text text="Rating"></Text>
+          </Column>
+        </columns>
+        <items>
+          <ColumnListItem >
+            <Text text="{empModel>Empid}"></Text>
+            <Text text="{empModel>Name}"></Text>
+            <Text text="{empModel>Desig}"></Text>
+            <Text text="{empModel>Skill}"></Text>
+            <Text text="{empModel>Status}"></Text>
+            <Text text="{empModel>Rating}"></Text>
+          </ColumnListItem>
+        </items>
+      </Table> -->
+
+
+    </content>
+    <footer>
+      <Bar >
+        <contentRight>
+          <Button text="Submit" type="Emphasized" press="onSubmit"></Button>
+        </contentRight>
+      </Bar>
+    </footer>
+
+  </Page>
+</mvc:View>
