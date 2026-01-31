@@ -2,8 +2,9 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
     "sap/m/MessageToast",
-    "com/demo/b78sapui5/model/formatter"
-], (Controller, MessageBox, MessageToast, formatter) => {
+    "com/demo/b78sapui5/model/formatter",
+    "sap/ui/model/Filter"
+], (Controller, MessageBox, MessageToast, formatter, Filter) => {
     "use strict";
 
     return Controller.extend("com.demo.b78sapui5.controller.View1", {
@@ -54,13 +55,22 @@ sap.ui.define([
             }
             this.dialog.open();
         },
-        onCloseDialog:function(){
+        onCloseDialog: function () {
             this.dialog.close();
         },
-        onPressRowFromF4Help:function(oEvent){
+        onPressRowFromF4Help: function (oEvent) {
             var empId = oEvent.getSource().getBindingContext("oModel").getObject().Empid;
             this.byId("oIpEmpId").setValue(empId);
             this.dialog.close();
+        },
+        onPressGo: function () {
+            // unltimate aim of this function is to construct the URL and trigger it
+            var aFilters = [];
+            var empId = this.byId("oIpEmpId").getValue();
+            if (empId !== "") {
+                aFilters.push(new Filter("Empid", "EQ", empId));
+            }
+            this.byId("oTabEmp").getBinding("items").filter(aFilters);
         }
     });
 });

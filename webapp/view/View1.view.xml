@@ -6,25 +6,31 @@
   xmlns:core="sap.ui.core">
   <Page title="I am View1">
     <content>
-      <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
-        <f:content>
-          <Label text="Select an Employee Id"></Label>
-          <Input id="oIpEmpId" showValueHelp="true" valueHelpRequest="onPressF4Help"></Input>
-         
-            
-          
-        </f:content>
-      </f:SimpleForm>
+      <Panel headerText="Filter/Sort Employees" expandable="true" class="sapUiSmallMarginBeginEnd" width="auto">
+        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
+          <f:content>
+            <core:Title text="Filters"></core:Title>
+            <Label text="Select an Employee Id"></Label>
+            <Input id="oIpEmpId" showValueHelp="true" valueHelpRequest="onPressF4Help"></Input>
+          </f:content>
+        </f:SimpleForm>
+        <FlexBox justifyContent="End">
+          <Button text="Go" icon="sap-icon://accept" type="Emphasized" class="sapUiTinyMarginEnd" press="onPressGo"></Button>
+          <Button text="Reset"  icon="sap-icon://reset" type="Reject"></Button>
+        </FlexBox>
 
 
-      <!-- <Table id="oTabEmp" items="{oModel>/EmployeeSet}" mode="MultiSelect">
+      </Panel>
+
+
+
+      <Table id="oTabEmp" items="{oModel>/EmployeeSet}" mode="SingleSelectLeft" class="sapUiSmallMarginBeginEnd" width="auto">
         <headerToolbar>
           <Toolbar >
             <Title text="Employee List"></Title>
             <ToolbarSpacer ></ToolbarSpacer>
-            <Button text="Get me Selected Employee Id(s)" type="Emphasized" press="getEmpId"></Button>
           </Toolbar>
-        
+
         </headerToolbar>
         <columns>
           <Column>
@@ -56,7 +62,7 @@
             <Text text="{path:'oModel>Rating',formatter:'.f.formatRating'}"></Text>
           </ColumnListItem>
         </items>
-      </Table> -->
+      </Table>
 
       <!-- <List items="{oModel>/EmployeeSet}">
          <headerToolbar>
