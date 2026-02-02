@@ -3,8 +3,9 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/m/MessageToast",
     "com/demo/b78sapui5/model/formatter",
-    "sap/ui/model/Filter"
-], (Controller, MessageBox, MessageToast, formatter, Filter) => {
+    "sap/ui/model/Filter",
+    "sap/ui/model/Sorter"
+], (Controller, MessageBox, MessageToast, formatter, Filter, Sorter) => {
     "use strict";
 
     return Controller.extend("com.demo.b78sapui5.controller.View1", {
@@ -66,11 +67,67 @@ sap.ui.define([
         onPressGo: function () {
             // unltimate aim of this function is to construct the URL and trigger it
             var aFilters = [];
+            var aSorters = [];
             var empId = this.byId("oIpEmpId").getValue();
+            var name = this.byId("oIpName").getValue();
             if (empId !== "") {
                 aFilters.push(new Filter("Empid", "EQ", empId));
             }
+            if (name !== "") {
+                aFilters.push(new Filter("Name", "Contains", name));
+            }
             this.byId("oTabEmp").getBinding("items").filter(aFilters);
+
+            //Sorting logic starts here
+            // grouping should take the precedence
+            var groupField = this.byId("oCBGroupField").getSelectedKey();
+            var groupOrder = this.byId("oRBGGroupOrder").getSelectedIndex();
+
+            if (groupField !== "" && groupOrder !== -1) {
+                aSorters.push(new Sorter(groupField, (groupOrder === 0) ? false : true, function (oBindingConntext) {
+                    if (groupField === "Skill") {
+                        var skill = oBindingConntext.getObject().Skill;
+                        return {
+                            key: skill,
+                            text: skill
+                        }
+                    }
+                    else  if (groupField === "Desig") {
+                        var desig = oBindingConntext.getObject().Desig;
+                        return {
+                            key: desig,
+                            text: desig
+                        }
+                    }
+
+
+                }));
+            }
+
+
+
+            /// below is sorting logic
+            var sortField = this.byId("oCBSortField").getSelectedKey();
+            var sortOrder = this.byId("oRBGSortOrder").getSelectedIndex();
+
+            if (sortField !== "" && sortOrder !== -1) {
+                aSorters.push(new Sorter(sortField, (sortOrder === 0) ? false : true));
+            }
+
+            this.byId("oTabEmp").getBinding("items").sort(aSorters);
+        },
+        onPressReset: function () {
+            this.byId("oIpEmpId").setValue("");
+            this.byId("oIpName").setValue("");
+            this.byId("oCBSortField").setSelectedKey("");
+            this.byId("oRBGSortOrder").setSelectedIndex(-1);
+
+             this.byId("oCBGroupField").setSelectedKey("");
+            this.byId("oRBGGroupOrder").setSelectedIndex(-1);
+            
+            this.byId("oTabEmp").getBinding("items").filter([]);
+            this.byId("oTabEmp").getBinding("items").sort([]);
+
         }
     });
 });

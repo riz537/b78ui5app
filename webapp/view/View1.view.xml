@@ -7,20 +7,53 @@
   <Page title="I am View1">
     <content>
     
-      <Panel headerText="Filter/Sort Employees" expandable="true" class="sapUiSmallMarginBeginEnd" width="auto">
-        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
+      <Panel headerText="Filter/Sort Employees" expandable="true"  expanded="true" class="sapUiSmallMarginBeginEnd" width="auto">
+        <f:SimpleForm editable="true" columnsL="3" columnsM="3" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="0" emptySpanM="0">
           <f:content>
             <core:Title text="Filters"></core:Title>
-            <Label text="Select an Employee Id"></Label>
+            <Label text="Employee Id"></Label>
             <Input id="oIpEmpId" showValueHelp="true" valueHelpRequest="onPressF4Help"></Input>
+            <Label text="Name"></Label>
+            <Input id="oIpName" ></Input>
+
+            <core:Title text="Sort"></core:Title>
+            <Label text="Sort field"></Label>
+            <ComboBox id="oCBSortField">
+              <items>
+                 <core:Item text="Employee Id" key="Empid"></core:Item>
+                 <core:Item text="Name" key="Name"></core:Item>
+              </items>
+            </ComboBox>
+            <Label text="Sort Order"></Label>
+            <RadioButtonGroup id="oRBGSortOrder" selectedIndex="-1" columns="2">
+               <buttons>
+                 <RadioButton text="Ascending"></RadioButton>
+                 <RadioButton text="Descending"></RadioButton>
+               </buttons>
+            </RadioButtonGroup>
+
+            <core:Title text="Grouping"></core:Title>
+             <Label text="Group field"></Label>
+            <ComboBox id="oCBGroupField">
+              <items>
+                 <core:Item text="Skill" key="Skill"></core:Item>
+                 <core:Item text="Designation" key="Desig"></core:Item>
+              </items>
+            </ComboBox>
+            <Label text="Group Order"></Label>
+            <RadioButtonGroup id="oRBGGroupOrder" selectedIndex="-1" columns="2">
+               <buttons>
+                 <RadioButton text="Ascending"></RadioButton>
+                 <RadioButton text="Descending"></RadioButton>
+               </buttons>
+            </RadioButtonGroup>
+
           </f:content>
         </f:SimpleForm>
         <FlexBox justifyContent="End">
           <Button text="Go" icon="sap-icon://accept" type="Emphasized" class="sapUiTinyMarginEnd" press="onPressGo"></Button>
-          <Button text="Reset"  icon="sap-icon://reset" type="Reject"></Button>
+          <Button text="Reset"  icon="sap-icon://reset" type="Reject" press="onPressReset"></Button>
         </FlexBox>
-
-
       </Panel>
 
 
