@@ -1,9 +1,35 @@
 <mvc:View controllerName="com.demo.b78sapui5.controller.View2"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
     <Page title="I am View2" showNavButton="true" navButtonPress="onNavBack">
     <content>
-      <!-- <Button text="Back" type="Emphasized" press="onNavBack"></Button> -->
+    <ObjectHeader title="{oModel>Name}" number="{oModel>Salary}" numberUnit="INR">
+      <attributes>
+        <ObjectAttribute title="Employee Id" text="{oModel>Empid}"></ObjectAttribute>
+         <ObjectAttribute title="Designation" text="{oModel>Desig}"></ObjectAttribute>
+      </attributes>
+      <statuses>
+       <ObjectStatus text="{oModel>Status}"></ObjectStatus>
+           
+      </statuses>
+    </ObjectHeader>
+    <IconTabBar >
+      <items>
+        <IconTabFilter icon="sap-icon://information">
+            <f:SimpleForm id="oSFEmpDetails" editable="false">
+                <f:content>
+                  <Label text="Employee Id"></Label>
+                  <Text text="{oModel>Empid}"></Text>
+                  <Label text="Employee Name"></Label>
+                  <Text text="{oModel>Name}"></Text>
+                  <Label text="Employee Designation"></Label>
+                  <Text text="{oModel>Desig}"></Text>
+                </f:content>
+            </f:SimpleForm>
+        </IconTabFilter>
+      </items>
+    </IconTabBar>
+     
     </content>
     </Page>
 </mvc:View>

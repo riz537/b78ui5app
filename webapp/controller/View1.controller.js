@@ -42,6 +42,10 @@ sap.ui.define([
         },
         onPressRow: function (oEvent) {
             var empId = oEvent.getSource().getBindingContext("oModel").getObject().Empid;
+            this.getOwnerComponent().getRouter().navTo("RouteView2",{
+                key:empId
+            });
+            
         },
         getEmpId: function () {
             var aRows = this.byId("oTabEmp").getSelectedItems();
