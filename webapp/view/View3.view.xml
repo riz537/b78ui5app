@@ -1,0 +1,38 @@
+<mvc:View controllerName="com.demo.b78sapui5.controller.View3"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
+    <Page title="I am View3" showNavButton="true" navButtonPress="onNavBack">
+    <content>
+      <f:SimpleForm title="Employee Details" editable="true" layout="ResponsiveGridLayout"
+      labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
+        <f:content>
+          <Label text="Employee Id"></Label>
+          <Input id="oIpEmpId"></Input>
+          <Label text="Name"></Label>
+          <Input id="oIpName"></Input>
+          <Label text="Deisgnation"></Label>
+          <Input id="oIpDesig"></Input>
+          <Label text="Skill"></Label>
+          <Input id="oIpSkill"></Input>
+          <Label text="Email"></Label>
+          <Input id="oIpEmail"></Input>
+          <Label text="Status"></Label>
+          <Input id="oIpStatus"></Input>
+          <Label text="Salary"></Label>
+          <Input id="oIpSalary"></Input>
+          <Label text="Rating"></Label>
+          <Input id="oIpRating"></Input>
+        </f:content>
+      
+      </f:SimpleForm>
+
+    </content>
+    <footer>
+      <Bar >
+        <contentRight>
+           <Button text="Save" icon="sap-icon://save" press="onPresSave"></Button>
+        </contentRight>
+      </Bar>
+    </footer>
+    </Page>
+</mvc:View>

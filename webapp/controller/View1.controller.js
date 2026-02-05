@@ -42,10 +42,10 @@ sap.ui.define([
         },
         onPressRow: function (oEvent) {
             var empId = oEvent.getSource().getBindingContext("oModel").getObject().Empid;
-            this.getOwnerComponent().getRouter().navTo("RouteView2",{
-                key:empId
+            this.getOwnerComponent().getRouter().navTo("RouteView2", {
+                key: empId
             });
-            
+
         },
         getEmpId: function () {
             var aRows = this.byId("oTabEmp").getSelectedItems();
@@ -96,7 +96,7 @@ sap.ui.define([
                             text: skill
                         }
                     }
-                    else  if (groupField === "Desig") {
+                    else if (groupField === "Desig") {
                         var desig = oBindingConntext.getObject().Desig;
                         return {
                             key: desig,
@@ -126,11 +126,43 @@ sap.ui.define([
             this.byId("oCBSortField").setSelectedKey("");
             this.byId("oRBGSortOrder").setSelectedIndex(-1);
 
-             this.byId("oCBGroupField").setSelectedKey("");
+            this.byId("oCBGroupField").setSelectedKey("");
             this.byId("oRBGGroupOrder").setSelectedIndex(-1);
-            
+
             this.byId("oTabEmp").getBinding("items").filter([]);
             this.byId("oTabEmp").getBinding("items").sort([]);
+
+        },
+        onCreateEmp: function () {
+            this.getOwnerComponent().getRouter().navTo("RouteView3");
+        },
+        onEditEmp: function () {
+            var selRow = this.byId("oTabEmp").getSelectedItem();
+            if (selRow === null) {
+                MessageBox.error("Bro, First Select the Row");
+                return;
+            }
+            var empId = selRow.getBindingContext("oModel").getObject().Empid;
+            this.getOwnerComponent().getRouter().navTo("RouteView4", {
+                key: empId
+            });
+        },
+        onDeleteEmp: function () {
+            var selRow = this.byId("oTabEmp").getSelectedItem();
+            if (selRow === null) {
+                MessageBox.error("Bro, First Select the Row");
+                return;
+            }
+            var empId = selRow.getBindingContext("oModel").getObject().Empid;
+            var oModel = this.getOwnerComponent().getModel("oModel");
+            oModel.remove("/EmployeeSet('"+empId+"')",{
+                success:function(req,res){
+                     MessageBox.success("Employee Deleted Successfully");
+                },
+                error:function(oError){
+                  MessageBox.error(JSON.parse(oError.responseText).error.message.value);
+                }
+            });
 
         }
     });

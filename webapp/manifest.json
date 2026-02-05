@@ -71,9 +71,9 @@
       "empModel": {
         "type": "sap.ui.model.json.JSONModel"
       },
-      "lookupModel":{
-         "type": "sap.ui.model.json.JSONModel",
-         "uri": "model/lookupdata.json"
+      "lookupModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/lookupdata.json"
       }
     },
     "resources": {
@@ -109,6 +109,20 @@
           "target": [
             "TargetView2"
           ]
+        },
+        {
+          "name": "RouteView3",
+          "pattern": "thirdview",
+          "target": [
+            "TargetView3"
+          ]
+        },
+        {
+          "name": "RouteView4",
+          "pattern": "fourthview/{key}",
+          "target": [
+            "TargetView4"
+          ]
         }
       ],
       "targets": {
@@ -119,6 +133,14 @@
         "TargetView2": {
           "id": "View2",
           "name": "View2"
+        },
+        "TargetView3": {
+          "id": "View3",
+          "name": "View3"
+        },
+         "TargetView4": {
+          "id": "View4",
+          "name": "View4"
         }
       }
     },

@@ -63,6 +63,9 @@
           <Toolbar >
             <Title text="Employee List"></Title>
             <ToolbarSpacer ></ToolbarSpacer>
+            <Button text="Create Employee" icon="sap-icon://add" type="Emphasized" press="onCreateEmp"></Button>
+            <Button text="Edit Employee" icon="sap-icon://edit" type="Emphasized" press="onEditEmp"></Button>
+             <Button text="Delete Employee" icon="sap-icon://delete" type="Emphasized" press="onDeleteEmp"></Button>
           </Toolbar>
 
         </headerToolbar>
