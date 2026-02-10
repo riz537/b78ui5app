@@ -1,35 +1,68 @@
 <mvc:View controllerName="com.demo.b78sapui5.controller.View2"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
-    <Page title="I am View2" showNavButton="true" navButtonPress="onNavBack">
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form">
+  <Page title="I am View2" showNavButton="true" navButtonPress="onNavBack">
     <content>
-    <ObjectHeader title="{oModel>Name}" number="{oModel>Salary}" numberUnit="INR">
-      <attributes>
-        <ObjectAttribute title="Employee Id" text="{oModel>Empid}"></ObjectAttribute>
-         <ObjectAttribute title="Designation" text="{oModel>Desig}"></ObjectAttribute>
-      </attributes>
-      <statuses>
-       <ObjectStatus text="{oModel>Status}"></ObjectStatus>
-           
-      </statuses>
-    </ObjectHeader>
-    <IconTabBar >
-      <items>
-        <IconTabFilter icon="sap-icon://information">
+      <ObjectHeader title="{oModel>Name}" number="{oModel>Salary}" numberUnit="INR">
+        <attributes>
+          <ObjectAttribute title="Employee Id" text="{oModel>Empid}"></ObjectAttribute>
+          <ObjectAttribute title="Designation" text="{oModel>Desig}"></ObjectAttribute>
+        </attributes>
+        <statuses>
+          <ObjectStatus text="{oModel>Status}"></ObjectStatus>
+
+        </statuses>
+      </ObjectHeader>
+      <IconTabBar >
+        <items>
+          <IconTabFilter icon="sap-icon://information">
             <f:SimpleForm id="oSFEmpDetails" editable="false">
-                <f:content>
-                  <Label text="Employee Id"></Label>
-                  <Text text="{oModel>Empid}"></Text>
-                  <Label text="Employee Name"></Label>
-                  <Text text="{oModel>Name}"></Text>
-                  <Label text="Employee Designation"></Label>
-                  <Text text="{oModel>Desig}"></Text>
-                </f:content>
+              <f:content>
+                <Label text="Employee Id"></Label>
+                <Text text="{oModel>Empid}"></Text>
+                <Label text="Employee Name"></Label>
+                <Text text="{oModel>Name}"></Text>
+                <Label text="Designation"></Label>
+                <Text text="{oModel>Desig}"></Text>
+                <Label text="Salary"></Label>
+                <Text text="{oModel>Salary}"></Text>
+                <Label text="Status"></Label>
+                <Text text="{oModel>Status}"></Text>
+                <Label text="Rating"></Label>
+                <Text text="{oModel>Rating}"></Text>
+              </f:content>
             </f:SimpleForm>
-        </IconTabFilter>
-      </items>
-    </IconTabBar>
-     
+          </IconTabFilter>
+          <IconTabFilter  icon="sap-icon://accounting-document-verification">
+            <Table items="{oModel>toCertifications}">
+              <columns>
+                <Column >
+                  <Text text="Employee Id"></Text>
+                </Column>
+                <Column >
+                  <Text text="Certification Code"></Text>
+                </Column>
+                <Column >
+                  <Text text="Skill"></Text>
+                </Column>
+                <Column >
+                  <Text text="Description"></Text>
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem >
+                  <Text text="{oModel>Empid}"></Text>
+                   <Text text="{oModel>Certcode}"></Text>
+                    <Text text="{oModel>Skill}"></Text>
+                     <Text text="{oModel>Certname}"></Text>
+                </ColumnListItem>
+              </items>
+            </Table>
+          </IconTabFilter>
+        </items>
+      </IconTabBar>
+
     </content>
-    </Page>
+  </Page>
 </mvc:View>

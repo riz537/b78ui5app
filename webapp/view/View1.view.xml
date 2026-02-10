@@ -79,9 +79,7 @@
           <Column >
             <Text text="Designation"></Text>
           </Column>
-          <Column >
-            <Text text="Skill"></Text>
-          </Column>
+        
           <Column >
             <Text text="Status"></Text>
           </Column>
@@ -94,7 +92,6 @@
             <Text text="{oModel>Empid}"></Text>
             <Text text="{oModel>Name}"></Text>
             <Text text="{oModel>Desig}"></Text>
-            <Text text="{oModel>Skill}"></Text>
             <ObjectStatus text="{oModel>Status}" state="{path:'oModel>Status',formatter:'.f.formatStatus'}" inverted="true"></ObjectStatus>
             <Text text="{path:'oModel>Rating',formatter:'.f.formatRating'}"></Text>
           </ColumnListItem>
