@@ -1,10 +1,10 @@
 <mvc:View controllerName="com.demo.b78sapui5.controller.View3"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m" xmlns:f="sap.ui.layout.form">
-    <Page title="I am View3" showNavButton="true" navButtonPress="onNavBack">
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.ui.layout.form">
+  <Page title="I am View3" showNavButton="true" navButtonPress="onNavBack">
     <content>
-      <f:SimpleForm title="Employee Details" editable="true" layout="ResponsiveGridLayout"
-      labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
+      <f:SimpleForm title="Employee Details" editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
         <f:content>
           <Label text="Employee Id"></Label>
           <Input id="oIpEmpId"></Input>
@@ -12,8 +12,6 @@
           <Input id="oIpName"></Input>
           <Label text="Deisgnation"></Label>
           <Input id="oIpDesig"></Input>
-          <Label text="Skill"></Label>
-          <Input id="oIpSkill"></Input>
           <Label text="Email"></Label>
           <Input id="oIpEmail"></Input>
           <Label text="Status"></Label>
@@ -23,16 +21,51 @@
           <Label text="Rating"></Label>
           <Input id="oIpRating"></Input>
         </f:content>
-      
       </f:SimpleForm>
+      <Table items="{certModel>/aCertifications}" class="sapUiSmallMargin" width="auto">
+        <headerToolbar>
+          <Toolbar >
+            <Title text="Add Certification Details"></Title>
+            <ToolbarSpacer ></ToolbarSpacer>
+            <Button icon="sap-icon://add" type="Emphasized" press="onPressAdd"></Button>
+          </Toolbar>
+        </headerToolbar>
+        <columns>
+          <Column >
+            <Text text="Employee Id"></Text>
+          </Column>
+          <Column >
+            <Text text="Certification Code"></Text>
+          </Column>
+          <Column >
+            <Text text="Certification Name"></Text>
+          </Column>
+          <Column >
+            <Text text="Skill"></Text>
+          </Column>
+          <Column >
+            <Text text="Delete"></Text>
+          </Column>
+        </columns>
+        
+        <items>
+          <ColumnListItem >
+            <Input value="{certModel>Empid}" enabled="false"></Input>
+            <Input value="{certModel>Certcode}"></Input>
+            <Input value="{certModel>Certname}"></Input>
+            <Input value="{certModel>Skill}"></Input>
+            <Button icon="sap-icon://delete" type="Reject" press="onDeleteRow"></Button>
+          </ColumnListItem>
+        </items>
+      </Table>
 
     </content>
     <footer>
       <Bar >
         <contentRight>
-           <Button text="Save" icon="sap-icon://save" press="onPresSave"></Button>
+          <Button text="Save" icon="sap-icon://save" press="onPresSave"></Button>
         </contentRight>
       </Bar>
     </footer>
-    </Page>
+  </Page>
 </mvc:View>

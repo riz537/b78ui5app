@@ -74,6 +74,9 @@
       "lookupModel": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/lookupdata.json"
+      },
+      "certModel":{
+         "type": "sap.ui.model.json.JSONModel"
       }
     },
     "resources": {
