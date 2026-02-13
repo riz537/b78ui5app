@@ -23,7 +23,14 @@
         </f:content>
 
       </f:SimpleForm>
-      <Table items="{oModel>toCertifications}">
+      <Table items="{certUpdateModel>/results}">
+      <headerToolbar>
+          <Toolbar >
+            <Title text="Add/Edit Certification Details"></Title>
+            <ToolbarSpacer ></ToolbarSpacer>
+            <Button icon="sap-icon://add" type="Emphasized" press="onPressAdd"></Button>
+          </Toolbar>
+        </headerToolbar>
         <columns>
           <Column >
             <Text text="Employee Id"></Text>
@@ -37,13 +44,17 @@
           <Column >
             <Text text="Description"></Text>
           </Column>
+          <Column >
+            <Text text="Delete"></Text>
+          </Column>
         </columns>
         <items>
           <ColumnListItem >
-            <Input value="{oModel>Empid}"></Input>
-            <Input value="{oModel>Certcode}"></Input>
-            <Input value="{oModel>Skill}"></Input>
-            <Input value="{oModel>Certname}"></Input>
+            <Input value="{certUpdateModel>Empid}"></Input>
+            <Input value="{certUpdateModel>Certcode}"></Input>
+            <Input value="{certUpdateModel>Skill}"></Input>
+            <Input value="{certUpdateModel>Certname}"></Input>
+             <Button icon="sap-icon://delete" type="Reject" press="onDeleteRow"></Button>
           </ColumnListItem>
         </items>
       </Table>
