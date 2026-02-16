@@ -1,7 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageBox"
-], (Controller, MessageBox) => {
+    "sap/m/MessageBox",
+    "sap/ui/unified/FileUploaderParameter",
+    "sap/m/MessageToast"
+], (Controller, MessageBox, FileUploaderParameter,MessageToast) => {
     "use strict";
 
     return Controller.extend("com.demo.b78sapui5.controller.View3", {
@@ -32,6 +34,42 @@ sap.ui.define([
         onNavBack: function () {
             this.getOwnerComponent().getRouter().navTo("RouteView1");
         },
+        onSelFile: function (oEvent) {
+            this.fileName = oEvent.getParameter("files")[0].name;
+            this.fileType = oEvent.getParameter("files")[0].type;
+        },
+        onUploadComplete:function(oEvent){
+            var status = oEvent.getParameter("status");
+            if(status === 201){
+               MessageToast.show("Employee photo uploaded successfully");
+            }else{
+                MessageToast.show("Falied to upload the photo");
+            }
+        },
+        uploadPhoto: function () {
+            var oFileUploader = this.byId("oFileUploaderPhoto");
+            var empId = this.byId("oIpEmpId").getValue();
+            var slug = empId + "," + this.fileName;
+
+            //1. add slug parameter
+            oFileUploader.addHeaderParameter(new FileUploaderParameter({
+                name: "slug",
+                value: slug
+            }));
+            //2. add the File type parameter 
+            oFileUploader.addHeaderParameter(new FileUploaderParameter({
+                name: "Content-Type",
+                value: this.fileType
+            }));
+            //3. add X-CSRF token
+            this.getOwnerComponent().getModel("oModel").refreshSecurityToken();
+            oFileUploader.addHeaderParameter(new FileUploaderParameter({
+                name: "x-csrf-token",
+                value: this.getOwnerComponent().getModel("oModel").getHeaders()['x-csrf-token']
+            }));
+            oFileUploader.upload();
+
+        },
         onPresSave: function () {
             var empId = this.byId("oIpEmpId").getValue();
             var name = this.byId("oIpName").getValue();
@@ -58,8 +96,9 @@ sap.ui.define([
                 success: function (req, res) {
                     if (res.statusCode === "201") {
                         MessageBox.success("New Employee Created Successfully");
+                        this.uploadPhoto();
                     }
-                },
+                }.bind(this),
                 error: function (oError) {
                     MessageBox.error(JSON.parse(oError.responseText).error.message.value);
                 }

@@ -1,7 +1,7 @@
 <mvc:View controllerName="com.demo.b78sapui5.controller.View3"
   xmlns:mvc="sap.ui.core.mvc"
   xmlns="sap.m"
-  xmlns:f="sap.ui.layout.form">
+  xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
   <Page title="I am View3" showNavButton="true" navButtonPress="onNavBack">
     <content>
       <f:SimpleForm title="Employee Details" editable="true" layout="ResponsiveGridLayout" labelSpanL="2" labelSpanM="2" emptySpanL="6" emptySpanM="6">
@@ -20,6 +20,9 @@
           <Input id="oIpSalary"></Input>
           <Label text="Rating"></Label>
           <Input id="oIpRating"></Input>
+           <Label text="Upload your photo"></Label>
+           <u:FileUploader id="oFileUploaderPhoto" uploadUrl="/sap/opu/odata/sap/ZB78_EMP_SRV/PhotoSet" sendXHR="true" useMultipart="false"
+             change="onSelFile" uploadComplete="onUploadComplete"></u:FileUploader>
         </f:content>
       </f:SimpleForm>
       <Table items="{certModel>/aCertifications}" class="sapUiSmallMargin" width="auto">
