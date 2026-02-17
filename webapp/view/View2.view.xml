@@ -4,7 +4,7 @@
   xmlns:f="sap.ui.layout.form">
   <Page title="I am View2" showNavButton="true" navButtonPress="onNavBack">
     <content>
-      <ObjectHeader title="{oModel>Name}" number="{oModel>Salary}" numberUnit="INR">
+      <ObjectHeader iconActive="true" iconPress="onPressPhoto" imageShape="Circle" icon="/sap/opu/odata/sap/ZB78_EMP_SRV/PhotoSet('{oModel>Empid}')/$value" title="{oModel>Name}" number="{oModel>Salary}" numberUnit="INR">
         <attributes>
           <ObjectAttribute title="Employee Id" text="{oModel>Empid}"></ObjectAttribute>
           <ObjectAttribute title="Designation" text="{oModel>Desig}"></ObjectAttribute>
