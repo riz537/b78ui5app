@@ -1,6 +1,6 @@
 <mvc:View controllerName="com.demo.b78sapui5.controller.View3"
   xmlns:mvc="sap.ui.core.mvc"
-  xmlns="sap.m"
+  xmlns="sap.m" xmlns:up="sap.m.upload"
   xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified">
   <Page title="I am View3" showNavButton="true" navButtonPress="onNavBack">
     <content>
@@ -62,6 +62,13 @@
         </items>
       </Table>
 
+      <Panel headerText="Upload documents">
+        <up:UploadSet id="oUploadSet" instantUpload="false" multiple="true" uploadUrl="/sap/opu/odata/sap/ZB78_EMP_SRV/DocSet"
+         uploadCompleted="onDocUploadCompleted">
+
+        </up:UploadSet>
+      </Panel>
+     
     </content>
     <footer>
       <Bar >

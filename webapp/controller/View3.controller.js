@@ -3,7 +3,7 @@ sap.ui.define([
     "sap/m/MessageBox",
     "sap/ui/unified/FileUploaderParameter",
     "sap/m/MessageToast"
-], (Controller, MessageBox, FileUploaderParameter,MessageToast) => {
+], (Controller, MessageBox, FileUploaderParameter, MessageToast) => {
     "use strict";
 
     return Controller.extend("com.demo.b78sapui5.controller.View3", {
@@ -38,11 +38,11 @@ sap.ui.define([
             this.fileName = oEvent.getParameter("files")[0].name;
             this.fileType = oEvent.getParameter("files")[0].type;
         },
-        onUploadComplete:function(oEvent){
+        onUploadComplete: function (oEvent) {
             var status = oEvent.getParameter("status");
-            if(status === 201){
-               MessageToast.show("Employee photo uploaded successfully");
-            }else{
+            if (status === 201) {
+                MessageToast.show("Employee photo uploaded successfully");
+            } else {
                 MessageToast.show("Falied to upload the photo");
             }
         },
@@ -68,6 +68,40 @@ sap.ui.define([
                 value: this.getOwnerComponent().getModel("oModel").getHeaders()['x-csrf-token']
             }));
             oFileUploader.upload();
+
+        },
+        onDocUploadCompleted:function(oEvent){
+              var status = oEvent.getParameter("status");
+              var fileName = oEvent.getParameter("item").getFileName();
+              if(status === 201){
+                MessageToast.show(fileName +"Uploaded successfully");
+              }
+        },
+        uploadDocs: function () {
+            var oUploadSet = this.byId("oUploadSet");
+            var empId = this.byId("oIpEmpId").getValue();
+            var aFileItems = oUploadSet.getIncompleteItems();
+
+            for (var i = 0; i < aFileItems.length; i++) {
+                var slug = empId + "," + aFileItems[i].getFileName();
+                //1. send slug parameter
+                oUploadSet.addHeaderField(new sap.ui.core.Item({
+                    key: "SLUG",
+					text: slug
+                }));
+
+                //2. send x-csrf token
+                this.getOwnerComponent().getModel("oModel").refreshSecurityToken();
+                oUploadSet.addHeaderField(new sap.ui.core.Item({
+                    key: "X-CSRF-Token",
+					text: this.getOwnerComponent().getModel("oModel").getSecurityToken()
+                }));
+                
+                oUploadSet.uploadItem(aFileItems[i]);
+                oUploadSet.removeAllHeaderFields();
+            }
+
+
 
         },
         onPresSave: function () {
@@ -97,6 +131,7 @@ sap.ui.define([
                     if (res.statusCode === "201") {
                         MessageBox.success("New Employee Created Successfully");
                         this.uploadPhoto();
+                        this.uploadDocs();
                     }
                 }.bind(this),
                 error: function (oError) {
