@@ -4,8 +4,9 @@ sap.ui.define([
     "sap/m/MessageToast",
     "com/demo/b78sapui5/model/formatter",
     "sap/ui/model/Filter",
-    "sap/ui/model/Sorter"
-], (Controller, MessageBox, MessageToast, formatter, Filter, Sorter) => {
+    "sap/ui/model/Sorter",
+    "sap/ui/export/Spreadsheet"
+], (Controller, MessageBox, MessageToast, formatter, Filter, Sorter, Spreadsheet) => {
     "use strict";
 
     return Controller.extend("com.demo.b78sapui5.controller.View1", {
@@ -155,13 +156,51 @@ sap.ui.define([
             }
             var empId = selRow.getBindingContext("oModel").getObject().Empid;
             var oModel = this.getOwnerComponent().getModel("oModel");
-            oModel.remove("/EmployeeSet('"+empId+"')",{
-                success:function(req,res){
-                     MessageBox.success("Employee Deleted Successfully");
+            oModel.remove("/EmployeeSet('" + empId + "')", {
+                success: function (req, res) {
+                    MessageBox.success("Employee Deleted Successfully");
                 },
-                error:function(oError){
-                  MessageBox.error(JSON.parse(oError.responseText).error.message.value);
+                error: function (oError) {
+                    MessageBox.error(JSON.parse(oError.responseText).error.message.value);
                 }
+            });
+
+        },
+        onExportToExcel: function () {
+            var aCols, oRowBinding, oSettings, oSheet;
+            oRowBinding = this.getView().byId('oTabEmp').getBinding('items');
+            // place your table columns and odata properties
+            aCols = [{
+                label: 'Employee ID',
+                property: 'Empid'
+            }, {
+                label: 'Name',
+                property: 'Name'
+            }, {
+                label: 'Designation',
+                property: 'Desig'
+            }, {
+                label: 'Email',
+                property: 'Email'
+            },{
+                label: 'Salary',
+                property: 'Salary',
+                type: 'Number',
+                delimiter: true,
+                scale: 2
+            }];
+            oSettings = {
+                workbook: {
+                    columns: aCols
+                },
+                dataSource: oRowBinding,
+                fileName: 'Employees.xlsx',
+                worker: true
+            };
+
+            oSheet = new Spreadsheet(oSettings);
+            oSheet.build().finally(function () {
+                oSheet.destroy();
             });
 
         }

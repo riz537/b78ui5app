@@ -66,6 +66,7 @@
             <Button text="Create Employee" icon="sap-icon://add" type="Emphasized" press="onCreateEmp"></Button>
             <Button text="Edit Employee" icon="sap-icon://edit" type="Emphasized" press="onEditEmp"></Button>
              <Button text="Delete Employee" icon="sap-icon://delete" type="Emphasized" press="onDeleteEmp"></Button>
+            <Button icon="sap-icon://excel-attachment" type="Reject" press="onExportToExcel"></Button>
           </Toolbar>
 
         </headerToolbar>

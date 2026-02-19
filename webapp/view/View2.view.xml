@@ -60,6 +60,24 @@
               </items>
             </Table>
           </IconTabFilter>
+          <IconTabFilter icon="sap-icon://attachment">
+            <Table items="{oModel>toDocs}">
+               <columns>
+                 <Column >
+                   <Text text="File Name"></Text>
+                 </Column>
+                 <Column >
+                   <Text text="Download"></Text>
+                 </Column>
+               </columns>
+               <items>
+                 <ColumnListItem >
+                   <Text text="{oModel>Filename}"></Text>
+                   <Button icon="sap-icon://download" type="Reject" press="onDownloadFile"></Button>
+                 </ColumnListItem>
+               </items>
+            </Table>
+          </IconTabFilter>
         </items>
       </IconTabBar>
 
