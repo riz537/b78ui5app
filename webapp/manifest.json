@@ -75,18 +75,28 @@
         "type": "sap.ui.model.json.JSONModel",
         "uri": "model/lookupdata.json"
       },
-      "certModel":{
-         "type": "sap.ui.model.json.JSONModel"
+      "certModel": {
+        "type": "sap.ui.model.json.JSONModel"
       },
-      "certUpdateModel":{
-         "type": "sap.ui.model.json.JSONModel"
+      "certUpdateModel": {
+        "type": "sap.ui.model.json.JSONModel"
       }
-
     },
     "resources": {
       "css": [
         {
           "uri": "css/style.css"
+        }
+      ],
+      "js": [
+        {
+          "uri": "libs/filesaver.js"
+        },
+        {
+          "uri": "libs/jszip.js"
+        },
+        {
+          "uri": "libs/xlsx.js"
         }
       ]
     },
@@ -130,6 +140,13 @@
           "target": [
             "TargetView4"
           ]
+        },
+        {
+          "name": "RouteView5",
+          "pattern": "fifthview",
+          "target": [
+            "TargetView5"
+          ]
         }
       ],
       "targets": {
@@ -145,9 +162,13 @@
           "id": "View3",
           "name": "View3"
         },
-         "TargetView4": {
+        "TargetView4": {
           "id": "View4",
           "name": "View4"
+        },
+        "TargetView5": {
+          "id": "View5",
+          "name": "View5"
         }
       }
     },

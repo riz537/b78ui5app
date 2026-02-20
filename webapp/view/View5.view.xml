@@ -1,0 +1,48 @@
+<mvc:View controllerName="com.demo.b78sapui5.controller.View5"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form">
+    <Page title="I am View5" showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <f:SimpleForm editable="true">
+                <f:content>
+                    <Label text="Select the file to upload" ></Label>
+                    <u:FileUploader id="oFileUploaderXL" uploadOnChange="true" buttonText="Browse" icon="sap-icon://upload" change="onSelectFile"></u:FileUploader>
+                </f:content>
+            </f:SimpleForm>
+            <Table items="{bulkEmpModel>/aEmployees}">
+              <columns>
+                <Column >
+                  <Text text="Employee Id"></Text>
+                </Column>
+                 <Column >
+                  <Text text="Name"></Text>
+                </Column>
+                 <Column >
+                  <Text text="Designation"></Text>
+                </Column>
+                 <Column >
+                  <Text text="Email"></Text>
+                </Column>
+                 <Column >
+                  <Text text="Salary"></Text>
+                </Column>
+                 <Column >
+                  <Text text="Status"></Text>
+                </Column>
+              </columns>
+              <items>
+                <ColumnListItem >
+                   <Input value="{bulkEmpModel>Empid}"></Input>
+                   <Input value="{bulkEmpModel>Name}"></Input>
+                   <Input value="{bulkEmpModel>Desig}"></Input>
+                   <Input value="{bulkEmpModel>Email}"></Input>
+                   <Input value="{bulkEmpModel>Salary}"></Input>
+                   <Input value="{bulkEmpModel>Status}"></Input>
+                </ColumnListItem>
+              </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

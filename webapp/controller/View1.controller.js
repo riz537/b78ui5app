@@ -166,6 +166,9 @@ sap.ui.define([
             });
 
         },
+        onCreateBulkEmp:function(){
+           this.getOwnerComponent().getRouter().navTo("RouteView5");  
+        },
         onExportToExcel: function () {
             var aCols, oRowBinding, oSettings, oSheet;
             oRowBinding = this.getView().byId('oTabEmp').getBinding('items');
