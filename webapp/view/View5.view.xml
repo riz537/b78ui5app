@@ -44,5 +44,12 @@
               </items>
             </Table>
         </content>
+        <footer>
+          <Bar >
+            <contentRight>
+              <Button text="Submit All" type="Emphasized" press="onSubmit"></Button>
+            </contentRight>
+          </Bar>
+        </footer>
     </Page>
 </mvc:View>
